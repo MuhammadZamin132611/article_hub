@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { TokenInterceptor } from "./services/token.interceptor";
 import { QuillModule } from "ngx-quill";
 import { SharedModule } from "./shared/shared.module";
+import { ArticleDetailsComponent } from './article-details/article-details.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: "Loading...",
@@ -34,7 +35,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, ArticleDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -52,3 +53,13 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bootstrap: [AppComponent],
 })
 export class AppModule { }
+
+
+// <!-- first run this command -->
+// <!-- npm install ngx-quill quill   -->
+
+// <!-- second run this command -->
+// <!-- npm install @types/quill@1.3.10 -->
+
+// <!-- import app module -->
+// <!-- QuillModule.forRoot(), -->
