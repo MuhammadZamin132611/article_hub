@@ -1,0 +1,47 @@
+<mat-toolbar [color]="themeService.getTheme()">
+    <mat-toolbar-row fxLayout="row">
+        <span class="title-center">{{dialogData.action}} User</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content>
+    <form [formGroup]="usersForm">
+        <div fxFlex fxLayout="column">
+            <div fxFlex="row wrap">
+                <mat-form-field appearance="outline" fxFlex [color]="themeService.getTheme()">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" required name>
+                    <mat-error *ngIf="usersForm.controls['name'].hasError('required')">Please enter your
+                        name.</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="row wrap">
+                <mat-form-field appearance="outline" fxFlex [color]="themeService.getTheme()">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required email>
+                    <mat-error *ngIf="usersForm.controls['email'].hasError('required')">Please enter your
+                        email.</mat-error>
+                    <mat-error *ngIf="usersForm.controls['email'].hasError('pattern')">Please enter valid
+                        email.</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="dialogData.action === 'Add'">
+                <div fxFlex="row wrap">
+                    <mat-form-field appearance="outline" fxFlex [color]="themeService.getTheme()">
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password" required password>
+                        <mat-error *ngIf="usersForm.controls['password'].hasError('required')">Please enter your
+                            password.</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+    <button mat-raised-button [color]="themeService.getTheme()" type="submit" (click)="handleSubmit()" [disabled]="!(usersForm.valid && usersForm.dirty)">{{action}}</button>
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
